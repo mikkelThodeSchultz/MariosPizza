@@ -23,8 +23,15 @@ public class PizzaMenu {
     Pizza mafia = new Pizza(14, "Mafia", "tomatsauce, ost, pepperoni, bacon, løg og oregano", 61);
 
 
+
+
     public void addPizzaToList() {
         pizzaListe.addAll(List.of(vesuvio, amerikaner, cacciatore, cabonara, dennis, bertil, silvia, victoria, toronfo, capricciosa, hawai, leBlisola, venezia, mafia));
+    }
+
+
+    public void addNewPizzaToList(Pizza pizza){
+        pizzaListe.add(pizza);
     }
 
     public ArrayList<Pizza> getPizzaListe() {

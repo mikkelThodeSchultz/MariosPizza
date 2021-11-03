@@ -1,31 +1,33 @@
 package com.company;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Scanner;
 
 public class Application {
 
-Scanner sc = new Scanner(System.in);
-UserInterface ui = new UserInterface();
-PizzaMenu pizzaMenu = new PizzaMenu();
-FileManager fileManager = new FileManager();
+    Scanner sc = new Scanner(System.in);
+    UserInterface ui = new UserInterface();
+    PizzaMenu pizzaMenu = new PizzaMenu();
+    FileManager fileManager = new FileManager();
 
 
-boolean goAgain = true;
+    boolean goAgain = true;
 
     public Application() throws FileNotFoundException {
     }
 
-    public void start() {
+    public void start() throws FileNotFoundException {
         pizzaMenu.addPizzaToList();
 
 
-        while (goAgain){
+        while (goAgain) {
 
             System.out.println(ui.welcomeMessage());
             int command = sc.nextInt();
             sc.nextLine();
-            switch (command){
+            switch (command) {
                 case 1:
                     showMenu();
                     break;
@@ -38,6 +40,7 @@ boolean goAgain = true;
                 case 0:
                     try {
                         fileManager.saveToFile(pizzaMenu);
+                        System.out.println("Pizzamenu has been saved.");
                     } catch (FileNotFoundException e) {
                         System.out.println("File not found");
                     }
@@ -50,16 +53,29 @@ boolean goAgain = true;
         }
     }
 
-    public void createOrder(){
+    public void createOrder() throws FileNotFoundException {
+        ui.createOrder(fileManager.readPizzaMenu());
+        fileManager.createPizzaFromFile();
+
+
 
     }
-    public void showMenu(){
-        ui.showMenu(pizzaMenu.showMenu(pizzaMenu));
+
+    public void showMenu() throws FileNotFoundException {
+        ui.showMenu(fileManager.readPizzaMenu());
+        // ui.showMenu(pizzaMenu.showMenu(pizzaMenu));
     }
-    public void showOrderList(){
+
+    public void showOrderList() {
 
     }
-    public void saveFiles(){
+
+    public void saveFiles() {
+
+    }
+
+    public void targetPizza(Scanner scanner) {
+        pizzaMenu.addNewPizzaToList(ui.targetPizza(scanner));
 
     }
 }
