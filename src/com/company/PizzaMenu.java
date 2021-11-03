@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PizzaMenu {
-    private ArrayList<Pizza> pizzaListe = new ArrayList<>();
 
+    private ArrayList<Pizza> pizzaListe = new ArrayList<>();
 
     Pizza vesuvio = new Pizza(1, "Vesuvio", "tomatsauce, ost, skinke og oregano", 57);
     Pizza amerikaner = new Pizza(2, "Amerikaner", "tomatsauce, ost, oksefars og oregano", 53);
@@ -22,7 +22,8 @@ public class PizzaMenu {
     Pizza venezia = new Pizza(13, "Venezia", "tomatsauce, ost, skinke, bacon og oregano", 61);
     Pizza mafia = new Pizza(14, "Mafia", "tomatsauce, ost, pepperoni, bacon, løg og oregano", 61);
 
-    public void pizzaList() {
+
+    public void addPizzaToList() {
         pizzaListe.addAll(List.of(vesuvio, amerikaner, cacciatore, cabonara, dennis, bertil, silvia, victoria, toronfo, capricciosa, hawai, leBlisola, venezia, mafia));
     }
 
@@ -30,12 +31,12 @@ public class PizzaMenu {
         return pizzaListe;
     }
 
-    public List showMenu2(){
-        List<Pizza> tempList = new ArrayList<>();
-        for (int i = 0; i < pizzaListe.size(); i++) {
-           tempList.add(pizzaListe.get(i));
+    public String showMenu(PizzaMenu pizzaMenu) {
+        String temp = "";
+        for (int i = 0; i < pizzaMenu.getPizzaListe().size(); i++) {
+            temp += pizzaMenu.getPizzaListe().get(i);
         }
-        return tempList;
+        return temp;
     }
 }
 

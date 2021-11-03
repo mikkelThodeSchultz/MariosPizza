@@ -9,7 +9,8 @@ PizzaMenu pizzaMenu = new PizzaMenu();
 boolean goAgain = true;
 
     public void start() {
-        pizzaMenu.pizzaList();
+        pizzaMenu.addPizzaToList();
+
 
         while (goAgain){
 
@@ -19,7 +20,6 @@ boolean goAgain = true;
             switch (command){
                 case 1:
                     showMenu();
-                    System.out.println(pizzaMenu);
                     break;
                 case 2:
                     createOrder();
@@ -42,8 +42,7 @@ boolean goAgain = true;
 
     }
     public void showMenu(){
-        ui.showMenu();
-
+        ui.showMenu(pizzaMenu.showMenu(pizzaMenu));
     }
     public void showOrderList(){
 
